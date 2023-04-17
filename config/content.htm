@@ -165,7 +165,16 @@ doc["add1to100"].bind('click', add)
 <p><!-- add 1 to 100 結束--></p>
 <!-- editor1 開始 -->
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor1" style="width: 600px; height: 300px;">url = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw5.txt"<br/>data = open(url).read().split("\n")<br/>data = data[1:]<br/>for i in data:<br/>    #print(i)<br/>    stud = i.split(":")[0]<br/>    score = i.split(":")[1]<br/>    print(stud, score)</div>
+<div id="kw_editor1" style="width: 600px; height: 300px;">
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">url = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw5.txt"
+data = open(url).read().split("\n")
+data = data[1:]
+for i in data:
+    #print(i)
+    stud = i.split(":")[0]
+    score = i.split(":")[1]
+    print(stud, score)</pre>
+</div>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
 <p><!-- 存擋表單開始 --></p>
 <form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
