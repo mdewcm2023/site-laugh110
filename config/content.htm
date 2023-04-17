@@ -351,7 +351,80 @@ for test_data in [test1, test2, test3, test4, test5]:
 for student_number, scores in student_scores.items():
     average_score = int(sum(scores) / len(scores))
     print(f"學生{student_number} 的平均成績 of {average_score}")</pre>
-<p></p><h1>權限</h1>
+<p></p>
+<p>將上述程式, 在本頁面導入 Brython 環境後, 可以直接執行, 並且將結果以 Brython browser 的 html 模組列在頁面中:</p>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<div id="brython_div"></div>
+<p>
+<script type="text/python">
+from browser import html, document
+brython_div = document["brython_div"]
+# Example data for five tests
+url1 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw5.txt"
+url2 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw6.txt"
+url3 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw6-2.txt"
+url4 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/075c06b2baf1bb07665f1a98e9f88f7e81ebe1a4/1aw8.txt"
+url5 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw9.txt"
+
+'''
+test1 = ["12345:80", "67890:70"]
+test2 = ["12345:85", "67890:75"]
+test3 = ["12345:90", "67890:80"]
+test4 = ["12345:95", "67890:85"]
+test5 = ["12345:100", "67890:90"]
+'''
+test1 = open(url1).read().split("\n")[1:]
+test2 = open(url2).read().split("\n")[1:]
+test3 = open(url3).read().split("\n")[1:]
+test4 = open(url4).read().split("\n")[1:]
+test5 = open(url5).read().split("\n")[1:]
+
+
+# Create a dictionary to store the student numbers and their test scores
+student_scores = {}
+ 
+# Iterate over the data for each test
+for test_data in [test1, test2, test3, test4, test5]:
+    # Iterate over the data for this test
+    for item in test_data:
+        # Split the item into its components
+        student_number, score = item.split(":")
+         
+        # Convert the score to an integer
+        try:
+            score = int(score)
+        except:
+            score = 0
+         
+        # Add the score to the list of scores for this student
+        if student_number not in student_scores:
+            student_scores[student_number] = []
+        student_scores[student_number].append(score)
+ 
+# Calculate the average score for each student
+for student_number, scores in student_scores.items():
+    average_score = int(sum(scores) / len(scores))
+    #print(f"Student {student_number} has an average score of {average_score}")
+    brython_div <= student_number
+    brython_div <= ":"
+    brython_div <= average_score
+    brython_div <= html.BR()
+
+brython_div <= data
+</script>
+</p><h1>權限</h1>
 <p>近端倉儲的設定檔案: 倉儲目錄下  .git中的 config, 表示倉儲的 configuration file(設定檔案)</p>
 <h1>資料結構</h1>
 <p>從 <a href="https://mdewcm2023.github.io/site-s40723224/content/w9.html">https://mdewcm2023.github.io/site-s40723224/content/w9.html</a> 可以知道, 若已知資料所在網路連結:</p>
